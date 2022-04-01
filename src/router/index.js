@@ -1,26 +1,21 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
-import Home from '../views/Home.vue';
-
-Vue.use(VueRouter);
+import { createWebHistory, createRouter } from "vue-router";
 
 const routes = [
     {
         path: "/",
         name: "Home",
-        component: Home,
+        component: () => import(/* webpackChunkName "home" */ '@/views/Home.vue')
     },
     {
         path: "/about",
         name: "About",
-        component: () => import('../views/About.vue'),
+        component: () => import(/* webpackChunkName "about" */ '@/views/About.vue')
     },
 ]
 
-const router = new VueRouter({
-	mode:'history', //해쉬값 제거 방식
-    base: process.env.BASE_URL,
+const router = createRouter({
+    history: createWebHistory(),
     routes,
 });
 
-export default router
+export default router;
