@@ -11,6 +11,11 @@ const routes = [
         name: "About",
         component: () => import(/* webpackChunkName "about" */ '@/views/About.vue')
     },
+    {
+        path: "/imageupload",
+        name: "ImageUpload",
+        component: () => import(/* webpackChunkName "about" */ '@/views/ImageUpload.vue')
+    },
 ]
 
 const router = createRouter({
